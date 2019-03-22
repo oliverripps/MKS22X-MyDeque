@@ -35,10 +35,11 @@ public class MyDeque<E>{
       data[start-1]=element;
       start--;
     }
-    if(isend())
-    else{
-      data[size-1]=element;
+    else if(isend()){
+      resize();
     }
+    start=size-1;
+    data[start]=element;
    }
   public void addLast(E element){
     data[end+1]=element;
@@ -49,11 +50,18 @@ public class MyDeque<E>{
   public E removeLast(){
    }
   public E getFirst(){
+    return data[start];
   }
   public E getLast(){
+    return data[end];
   }
   private void resize(){
-    //double
+    E[] es=new E[size*2];
+    for(int i=0;i<size;i++){
+      es[i]=data[i];
+    }
+    size=size*2;
+    data=es;
   }
   private boolean isend(){
     if(end==size-1){
