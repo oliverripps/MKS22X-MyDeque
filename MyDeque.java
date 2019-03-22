@@ -21,14 +21,17 @@ public class MyDeque<E>{
     return end-start;
   }
   public String toString(){
-    String str="["
+    String str="{}"
     for(int i=start;i<=end;i++){
       if(i>=size){
         i=i-size;
       }
-      str+=data[i]+ ",";
+      str+=data[i];
+      if(i<end){
+        str+=" ";
+      }
     }
-    str+="]";
+    str+="}";
   }
   public void addFirst(E element){
     if(start>=1){
