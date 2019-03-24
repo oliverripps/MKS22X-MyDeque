@@ -107,9 +107,39 @@ public class MyDeque<E>{
 
 
   public E removeFirst(){
+  if (size!=0){
+   E removed = data[start];
+   data[start] = null;
+   if (start==data.length-1){
+     start=0;
+   }
+   else{
+     start++;
+   }
+   size--;
+   return removed;
+ }
+ else{
+   throw new NoSuchElementException();
+ }
 
    }
   public E removeLast(){
+    if(size==0){
+      throw new NoSuchElementException();
+    }
+    if(end==0){
+      end=data.length;
+      E removed = data[end];
+    }
+    else{
+      E removed = data[end-1];
+      data[end-1]=null;
+      end--;
+    }
+    size--;
+    return removed;
+
    }
   public E getFirst(){
     return data[start];
