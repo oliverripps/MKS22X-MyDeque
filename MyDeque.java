@@ -49,20 +49,27 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    String str="{";
-    for(int i=start;i<=end;i++){
-      if(i>=size){
-        i=i-size;
-      }
-      str+=data[i];
-      if(i<end){
+    if(size==0){
+      return "{}";
+    }
+    String str = "{";
+    for (int i=start; i<data.length && data[i]!=null;++i){
+      if(i!=start){
         str+=" ";
       }
+      str+=data[i];
     }
-    str+="}";
+    for (int i=0; i<start && data[i]!=null; ++i){
+      if(i!=start){
+        str+=" ";
+      }
+      str+=data[i]+" ";
+    }
+
+    str += "}";
+
     return str;
   }
-
   public void addFirst(E element){
     if(element==null){
       throw new NullPointerException();
