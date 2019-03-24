@@ -6,8 +6,7 @@ public class MyDeque<E>{
 
   @SuppressWarnings("unchecked")
   public MyDeque(){
-    es=(E[])new Object[initialCapacity];
-    data=es;
+    data=(E[])new Object[10];
     start=0;
     end=0;
     size=0;
@@ -16,8 +15,7 @@ public class MyDeque<E>{
 
   @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
-    es=(E[])new Object[initialCapacity];
-    data=es;
+    data=(E[])new Object[initialCapacity];
     start=0;
     end=0;
     size=0;
@@ -82,7 +80,7 @@ public class MyDeque<E>{
     size++;
    }
 
-   
+
   public E removeFirst(){
    }
   public E removeLast(){
