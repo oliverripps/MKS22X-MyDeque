@@ -49,7 +49,7 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    String str="{"
+    String str="{";
     for(int i=start;i<=end;i++){
       if(i>=size){
         i=i-size;
@@ -60,6 +60,7 @@ public class MyDeque<E>{
       }
     }
     str+="}";
+    return str;
   }
 
   public void addFirst(E element){
@@ -124,16 +125,18 @@ public class MyDeque<E>{
  }
 
    }
+
   public E removeLast(){
+    E removed;
     if(size==0){
       throw new NoSuchElementException();
     }
     if(end==0){
       end=data.length;
-      E removed = data[end];
+      removed = data[end];
     }
     else{
-      E removed = data[end-1];
+      removed = data[end-1];
       data[end-1]=null;
       end--;
     }
