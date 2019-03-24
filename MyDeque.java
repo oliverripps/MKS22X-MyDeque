@@ -6,7 +6,7 @@ public class MyDeque<E>{
 
   @SuppressWarnings("unchecked")
   public MyDeque(){
-    E[] es=new E[10];
+    es=(E[])new Object[initialCapacity];
     data=es;
     start=0;
     end=0;
@@ -16,17 +16,18 @@ public class MyDeque<E>{
 
   @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
-    E[] es=new E[initialCapactity];
+    es=(E[])new Object[initialCapacity];
     data=es;
     start=0;
     end=0;
-    size=initialCapacity;
+    size=0;
    }
   public int size(){
-    return end-start;
+    return size;
   }
+
   public String toString(){
-    String str="{}"
+    String str="{"
     for(int i=start;i<=end;i++){
       if(i>=size){
         i=i-size;
@@ -39,16 +40,30 @@ public class MyDeque<E>{
     str+="}";
   }
   public void addFirst(E element){
-    if(start>=1){
-      data[start-1]=element;
-      start--;
+    if(element==null){
+      thrownew NullPointerException();
     }
-    else if(isend()){
+    if(isend()){
       resize();
     }
-    start=size-1;
-    data[start]=element;
+
+    if(start==0){
+      if(end==0){
+        data[0]=element;
+        end++;
+      }
+      else{
+        data[data.length-1]=element;
+        start=data.length-1;
+      }
+    }
+    else{
+      data[start]=element;
+      start--;
+    }
+    start--;
    }
+   
   public void addLast(E element){
     data[end+1]=element;
     end++;
