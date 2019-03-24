@@ -24,6 +24,30 @@ public class MyDeque<E>{
     return size;
   }
 
+  @SuppressWarnings("unchecked")
+  private void resize(){
+    E[] curr = (E[])new Object[2 * data.length + 1];
+    if(start<end){
+      for(int i = 0; i + start < end; i++){
+        curr[i] = data[i + start];
+      }
+    }
+    if(start > end){
+      int i = 0;
+      for(int l = start; l < data.length; l++){
+        curr[i] = data[l];
+        i++;
+      }
+      for(int l = 0; l < end; l++){
+        curr[i] = data[l];
+        i++;
+      }
+    }
+    data = curr;
+    start = 0;
+    end = size;
+  }
+
   public String toString(){
     String str="{"
     for(int i=start;i<=end;i++){
@@ -37,6 +61,7 @@ public class MyDeque<E>{
     }
     str+="}";
   }
+
   public void addFirst(E element){
     if(element==null){
       throw new NullPointerException();
@@ -82,6 +107,7 @@ public class MyDeque<E>{
 
 
   public E removeFirst(){
+
    }
   public E removeLast(){
    }
@@ -92,15 +118,6 @@ public class MyDeque<E>{
     return data[end];
   }
 
-  @SuppressWarnings("unchecked")
-  private void resize(){
-    E[] es=new E[size*2];
-    for(int i=0;i<size;i++){
-      es[i]=data[i];
-    }
-    size=size*2;
-    data=es;
-  }
   private boolean isend(){
     if(start == data.length - 1){
       return true;
