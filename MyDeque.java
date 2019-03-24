@@ -141,11 +141,28 @@ public class MyDeque<E>{
     return removed;
 
    }
+
+
   public E getFirst(){
+    if(size!=0){
     return data[start];
   }
+  else{
+    throw new NoSuchElementException();
+  }
+  }
   public E getLast(){
-    return data[end];
+    if(size!=0){
+      if(end!=0){
+        return data[end];
+      }
+      else{
+        return data[data.length-1];
+      }
+    }
+    else{
+      throw new NoSuchElementException();
+    }
   }
 
   private boolean isend(){
