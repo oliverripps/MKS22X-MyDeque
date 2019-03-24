@@ -1,7 +1,10 @@
+import java.util.*;
+
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
 
+  @SuppressWarnings("unchecked")
   public MyDeque(){
     E[] es=new E[10];
     data=es;
@@ -10,6 +13,8 @@ public class MyDeque<E>{
     size=0;
 
   }
+
+  @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
     E[] es=new E[initialCapactity];
     data=es;
@@ -58,6 +63,8 @@ public class MyDeque<E>{
   public E getLast(){
     return data[end];
   }
+
+  @SuppressWarnings("unchecked")
   private void resize(){
     E[] es=new E[size*2];
     for(int i=0;i<size;i++){
