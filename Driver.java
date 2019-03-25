@@ -45,59 +45,59 @@ public class Driver {
 		// empty array
 
 		if (!deque.toString().equals("{}"))
-			out.add(message("{}.toString()", "\"{}\"", "\""+deque.toString()+"\""));
+			System.out.println(message("{}.toString()", "\"{}\"", "\""+deque.toString()+"\""));
 
 		if (deque.size() != 0)
-			out.add(message("{}.size()", 0, deque.size()));
+			System.out.println(message("{}.size()", 0, deque.size()));
 
 		// exception testing
 
 		try {
 			deque.getFirst();
-			out.add(message("{}.getFirst()", "NoSuchElementException", Integer.toString(deque.getFirst())));
+			System.out.println(message("{}.getFirst()", "NoSuchElementException", Integer.toString(deque.getFirst())));
 		} catch (NoSuchElementException e) {}
 		catch (Exception e) {
-			out.add(message("{}.getFirst()", "NoSuchElementException", e.getClass().getSimpleName()));
+			System.out.println(message("{}.getFirst()", "NoSuchElementException", e.getClass().getSimpleName()));
 		}
 
 		try {
 			deque.getLast();
-			out.add(message("{}.getLast()", "NoSuchElementException", Integer.toString(deque.getLast())));
+			System.out.println(message("{}.getLast()", "NoSuchElementException", Integer.toString(deque.getLast())));
 		} catch (NoSuchElementException e) {}
 		catch (Exception e) {
-			out.add(message("{}.getLast()", "NoSuchElementException", e.getClass().getSimpleName()));
+			System.out.println(message("{}.getLast()", "NoSuchElementException", e.getClass().getSimpleName()));
 		}
 
 		try {
 			deque.removeFirst();
-			out.add(message("{}.removeFirst()", "NoSuchElementException", Integer.toString(deque.removeFirst())));
+			System.out.println(message("{}.removeFirst()", "NoSuchElementException", Integer.toString(deque.removeFirst())));
 		} catch (NoSuchElementException e) {}
 		catch (Exception e) {
-			out.add(message("{}.removeFirst()", "NoSuchElementException", e.getClass().getSimpleName()));
+			System.out.println(message("{}.removeFirst()", "NoSuchElementException", e.getClass().getSimpleName()));
 		}
 
 		try {
 			deque.removeLast();
-			out.add(message("{}.removeLast()", "NoSuchElementException", Integer.toString(deque.removeLast())));
+			System.out.println(message("{}.removeLast()", "NoSuchElementException", Integer.toString(deque.removeLast())));
 		} catch (NoSuchElementException e) {}
 		catch (Exception e) {
-			out.add(message("{}.removeLast()", "NoSuchElementException", e.getClass().getSimpleName()));
+			System.out.println(message("{}.removeLast()", "NoSuchElementException", e.getClass().getSimpleName()));
 		}
 
 		try {
 			deque.addFirst(null);
-			out.add(message("{}.addFirst(null)", "NullPointerException", "you didn't throw anything"));
+			System.out.println(message("{}.addFirst(null)", "NullPointerException", "you didn't throw anything"));
 		} catch (NullPointerException e) {}
 		catch (Exception e) {
-			out.add(message("{}.addFirst(null)", "NullPointerException", e.getClass().getSimpleName()));
+			System.out.println(message("{}.addFirst(null)", "NullPointerException", e.getClass().getSimpleName()));
 		}
 
 		try {
 			deque.addLast(null);
-			out.add(message("{}.addLast(null)", "NullPointerException", "you didn't throw anything"));
+			System.out.println(message("{}.addLast(null)", "NullPointerException", "you didn't throw anything"));
 		} catch (NullPointerException e) {}
 		catch (Exception e) {
-			out.add(message("{}.addLast(null)", "NullPointerException", e.getClass().getSimpleName()));
+			System.out.println(message("{}.addLast(null)", "NullPointerException", e.getClass().getSimpleName()));
 		}
 
 		// adding forward past capacity
@@ -110,15 +110,15 @@ public class Driver {
 				deque.addLast(i);
 				comp.addLast(i);
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".addLast("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".addLast("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".addLast("+i+")", gist_string(comp), e.toString()));
+				System.out.println(message(old+".addLast("+i+")", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -131,15 +131,15 @@ public class Driver {
 				deque.removeLast();
 				comp.removeLast();
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".removeLast()", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".removeLast()", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".removeLast()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".removeLast()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".removeLast()", gist_string(comp), e.toString()));
+				System.out.println(message(old+".removeLast()", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -155,15 +155,15 @@ public class Driver {
 				deque.addFirst(i);
 				comp.addFirst(i);
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".addFirst("+i+")", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".addFirst("+i+")", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".addFirst("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".addFirst("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".addFirst("+i+")", gist_string(comp), e.toString()));
+				System.out.println(message(old+".addFirst("+i+")", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -176,15 +176,15 @@ public class Driver {
 				deque.removeFirst();
 				comp.removeFirst();
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".removeFirst()", gist_string(comp), e.toString()));
+				System.out.println(message(old+".removeFirst()", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -200,15 +200,15 @@ public class Driver {
 				deque.addLast(i);
 				comp.addLast(i);
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".addLast("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".addLast("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".addLast("+i+")", gist_string(comp), e.toString()));
+				System.out.println(message(old+".addLast("+i+")", gist_string(comp), e.toString()));
 				break;
 			}
 			old = gist_string(deque);
@@ -216,15 +216,15 @@ public class Driver {
 				deque.removeFirst();
 				comp.removeFirst();
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".removeFirst()", gist_string(comp), e.toString()));
+				System.out.println(message(old+".removeFirst()", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -237,15 +237,15 @@ public class Driver {
 				deque.addLast(i);
 				comp.addLast(i);
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".addLast("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".addLast("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".addLast("+i+")", gist_string(comp), e.toString()));
+				System.out.println(message(old+".addLast("+i+")", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -258,15 +258,15 @@ public class Driver {
 				deque.removeLast();
 				comp.removeLast();
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".removeLast()", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".removeLast()", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".removeLast()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".removeLast()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".removeLast()", gist_string(comp), e.toString()));
+				System.out.println(message(old+".removeLast()", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -282,15 +282,15 @@ public class Driver {
 				deque.addFirst(i);
 				comp.addFirst(i);
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".addFirst("+i+")", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".addFirst("+i+")", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".addFirst("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".addFirst("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".addFirst("+i+")", gist_string(comp), e.toString()));
+				System.out.println(message(old+".addFirst("+i+")", gist_string(comp), e.toString()));
 				break;
 			}
 			old = gist_string(deque);
@@ -298,15 +298,15 @@ public class Driver {
 				deque.removeLast();
 				comp.removeLast();
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".removeLast()", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".removeLast()", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".removeLast()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".removeLast()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".removeLast()", gist_string(comp), e.toString()));
+				System.out.println(message(old+".removeLast()", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -319,15 +319,15 @@ public class Driver {
 				deque.addFirst(i);
 				comp.addFirst(i);
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".addFirst("+i+")", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".addFirst("+i+")", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".addFirst("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".addFirst("+i+")\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".addFirst("+i+")", gist_string(comp), e.toString()));
+				System.out.println(message(old+".addFirst("+i+")", gist_string(comp), e.toString()));
 				break;
 			}
 		}
@@ -340,15 +340,15 @@ public class Driver {
 				deque.removeFirst();
 				comp.removeFirst();
 				if (!edge_check(comp, deque)) {
-					out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
+					System.out.println(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
 					break;
 				}
 				if (comp.size() != deque.size()) {
-					out.add(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
+					System.out.println(message(old+".removeFirst()\n"+gist_string(deque)+".size()", comp.size(), deque.size()));
 					break;
 				}
 			} catch (Exception e) {
-				out.add(message(old+".removeFirst()", gist_string(comp), e.toString()));
+				System.out.println(message(old+".removeFirst()", gist_string(comp), e.toString()));
 				break;
 			}
 		}
