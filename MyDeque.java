@@ -95,7 +95,8 @@ public class MyDeque <E> {
       data[start]=element;
       start--;
     }
-    start--;
+    //start--;
+    size++;
    }
 
 
