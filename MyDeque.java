@@ -1,7 +1,8 @@
 import java.util.*;
 
 
-public class MyDeque<E> {
+public class MyDeque <E> {
+
   private E[] data;
   private int size, start, end;
 
