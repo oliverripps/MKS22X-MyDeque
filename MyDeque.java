@@ -1,8 +1,7 @@
 import java.util.*;
 
 
-
-public class MyDeque<E>{
+public class MyDeque<E> {
   private E[] data;
   private int size, start, end;
 
@@ -72,6 +71,7 @@ public class MyDeque<E>{
 
     return str;
   }
+  //FIX
   public void addFirst(E element){
     if(element==null){
       throw new NullPointerException();
@@ -98,7 +98,7 @@ public class MyDeque<E>{
    }
 
 
-
+//FIX
   public void addLast(E element){
     if(element==null){
       throw new NullPointerException();
@@ -118,6 +118,7 @@ public class MyDeque<E>{
    }
 
 
+//FIX
   public E removeFirst(){
   if (size!=0){
    E removed = data[start];
@@ -138,6 +139,7 @@ public class MyDeque<E>{
 
    }
 
+//FIX
   public E removeLast(){
     E removed;
     if(size==0){
@@ -188,9 +190,9 @@ public class MyDeque<E>{
   }
 
   public static void main(String[] args){
-    MyDeque my = new MyDeque();
+    MyDeque<Integer> my = new MyDeque<Integer>();
     System.out.println(my.toString());
-    my.addfirst(5);
+    my.addFirst(5);
     System.out.println(my.toString());
 
 
