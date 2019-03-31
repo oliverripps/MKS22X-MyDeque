@@ -78,24 +78,21 @@ public class MyDeque <E> {
     if(element==null){
       throw new NullPointerException();
     }
-
     if(size==data.length){
       resize();
     }
-
     if(size==0){
       data[start]=element;
       end=start;
       size++;
       return;
     }
-
     start=(start-1+data.length)%data.length;
     data[start]=element;
     size++;
   }
 
-  
+
 
 //FIX
   public E removeFirst(){
