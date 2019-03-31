@@ -110,46 +110,31 @@ public class MyDeque <E> {
     size++;
   }
 
-//FIX
   public E removeFirst(){
-  if (size!=0){
-   E removed = data[start];
-   //System.out.println(removed);
-   data[start] = null;
-   if (start==data.length-1){
-     start=0;
-   }
-   else{
-     start++;
-   }
-   size--;
-   return removed;
- }
- else{
-   throw new NoSuchElementException();
- }
-
-   }
-
-//FIX
-  public E removeLast(){
-    E removed;
-    if(size==0){
-      throw new NoSuchElementException();
-    }
-    if(end==0){
-      end=data.length;
-      removed = data[end];
+    E e=data[start];
+    data[start]=null;
+    if(start==data.length){
+      start=0;
     }
     else{
-      removed = data[end-1];
-      data[end-1]=null;
+      start++;
+    }
+    size--;
+    return e;
+  }
+
+  public E removeLast(){
+    E e=data[end];
+    data[end]=null;
+    if(end==0){
+      end=data.length-1;
+    }
+    else{
       end--;
     }
     size--;
-    return removed;
-
-   }
+    return e;
+  }
 
 
   public E getFirst(){
