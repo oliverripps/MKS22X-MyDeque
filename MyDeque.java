@@ -72,53 +72,30 @@ public class MyDeque <E> {
 
     return str;
   }
-  //FIX
+
+
   public void addFirst(E element){
     if(element==null){
       throw new NullPointerException();
     }
-    if(isend()){
+
+    if(size==data.length){
       resize();
     }
 
-    if(start==0){
-      if(end==0){
-        data[0]=element;
-        end++;
-      }
-      else{
-        data[data.length-1]=element;
-        start=data.length-1;
-      }
-    }
-    else{
+    if(size==0){
       data[start]=element;
-      start--;
+      end=start;
+      size++;
+      return;
     }
-    //start--;
+
+    start=(start-1+data.length)%data.length;
+    data[start]=element;
     size++;
-   }
+  }
 
-
-//FIX
-  public void addLast(E element){
-    if(element==null){
-      throw new NullPointerException();
-    }
-    if(isend()){
-      resize();
-    }
-    if(end==data.length-1){
-      data[data.length - 1] = element;
-      end=0;
-    }
-    else{
-      data[end] = element;
-      end++;
-    }
-    size++;
-   }
-
+  
 
 //FIX
   public E removeFirst(){
