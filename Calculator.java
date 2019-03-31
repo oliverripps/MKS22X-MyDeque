@@ -1,3 +1,5 @@
+import java.utit.*;
+
 public class Calculator{
 
   public static double eval(String s){
@@ -14,5 +16,21 @@ public class Calculator{
         Double second=my.removeLast();
         my.addLast(second-first);
       }
-      
+      else if(nums[i].equals("*")){
+        Double first=my.removeLast();
+        Double second=my.removeLast();
+        my.addLast(second*first);
+      }
+      else if(nums[i].equals("/")){
+        Double first=my.removeLast();
+        Double second=my.removeLast();
+        my.addLast(second/first);
+      }
+      else if(nums[i].equals("%")){
+        Double first=my.removeLast();
+        Double second=my.removeLast();
+        my.addLast(second%first);
+      }
+    }
+
 }
