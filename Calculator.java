@@ -1,16 +1,14 @@
 public class Calculator{
 
-    public static double eval(String s){
-      MyDeque<String> m = new mDeque<String>();
-      int position;
-      int first;
-      int second;
-      String[] strs =s.split(" ");
-      for(int i=0;i<strs.length;i++){
-        if(strs[i].equals("+") || strs[i].equals("-") || strs[i].equals("*") || strs[i].equals("/") ||  strs[i].equals("%")){
-          position=i;
-        }
-        m.getFirst()
+  public static double eval(String s){
+    String[] nums= s.split(" ");
+    MyDeque<Double> my = new MyDeque<Double>();
+    for(int i=0;i<nums.length;i++){
+      if(nums[i].equals("+")){
+        Double first = my.removeLast();
+        Double second = my.removeLast();
+        my.addLast(second+first);
       }
     }
+  }
 }

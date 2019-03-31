@@ -51,25 +51,27 @@ public class MyDeque <E> {
   }
 
   public String toString(){
-    if(size==0){
+    String str = "{";
+    if(size == 0){
       return "{}";
     }
-    String str = "{";
-    for (int i=start; i<data.length && data[i]!=null;++i){
-      if(i!=start){
-        str+=" ";
-      }
-      str+=data[i];
+    if(start==end){
+      str+=data[0];
     }
-    for (int i=0; i<start && data[i]!=null; ++i){
-      if(i!=start){
-        str+=" ";
+    else if(start < end){
+      for(int i=start;i<=end;i++){
+        str+=(data[i]+" ");
       }
-      str+=data[i]+" ";
     }
-
-    str += "}";
-
+    else{
+      for(int i=start;i<data.length;i++){
+        str+=(data[i]+" ");
+      }
+      for(int l = 0;l<=end;l++){
+        str+=(data[l] + " ");
+      }
+    }
+    str+= "}";
     return str;
   }
 
@@ -145,26 +147,20 @@ public class MyDeque <E> {
     throw new NoSuchElementException();
   }
   }
-  public E getLast(){
-    if(size!=0){
-      if(end!=0){
-        return data[end];
-      }
-      else{
-        return data[data.length-1];
-      }
-    }
-    else{
-      throw new NoSuchElementException();
-    }
-  }
 
-  private boolean isend(){
+  public E getLast(){
+   if (size == 0) {
+     throw new NoSuchElementException();
+   }
+   return data[end];
+ }
+
+  /*private boolean isend(){
     if(start == data.length - 1){
       return true;
     }
     return false;
-  }
+  }*/
 
   public static void main(String[] args){
     MyDeque<Integer> my = new MyDeque<Integer>();
