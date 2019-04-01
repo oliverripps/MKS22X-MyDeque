@@ -84,22 +84,24 @@ public class MyDeque <E> {
     size++;
   }
 
+
   public void addLast(E element){
-        if(element==null){
-            throw new NullPointerException();
-        }
-        if(end==data.length-1 || size==data.length){
-          resize();
-        }
-        end++;
-        if(end<0){
-          data[data.length+end]=element;
-        }
-        else{
-          data[end] = element;
-        }
-        size++;
-    }
+       if(element==null){
+           throw new NullPointerException();
+       }
+       if(end==data.length-1 || size==data.length){
+         resize();
+       }
+       end++;
+       if(end<0){
+         data[data.length+end]=element;
+       }
+       else{
+         data[end] = element;
+       }
+       size++;
+   }
+
 
 
   public E removeFirst(){
@@ -144,20 +146,4 @@ public class MyDeque <E> {
    }
    return data[end];
  }
-
-  /*private boolean isend(){
-    if(start == data.length - 1){
-      return true;
-    }
-    return false;
-  }*/
-
-  public static void main(String[] args){
-    MyDeque<Integer> my = new MyDeque<Integer>();
-    System.out.println(my.toString());
-    my.addFirst(5);
-    System.out.println(my.toString());
-
-
-  }
 }
