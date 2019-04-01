@@ -28,27 +28,17 @@ public class MyDeque <E> {
 
   @SuppressWarnings("unchecked")
   private void resize(){
-    E[] curr = (E[])new Object[2 * data.length + 1];
-    if(start<end){
-      for(int i = 0; i + start < end; i++){
-        curr[i] = data[i + start];
-      }
+        E[] e = (E[])new Object[data.length*2];
+        for(int i=start;i<=end;i++){
+            if(i<0){
+              e[e.length+i]=data[data.length+i];
+            }
+            else{
+                e[i]=data[i];
+            }
+        }
+        data = e;
     }
-    if(start > end){
-      int i = 0;
-      for(int l = start; l < data.length; l++){
-        curr[i] = data[l];
-        i++;
-      }
-      for(int l = 0; l < end; l++){
-        curr[i] = data[l];
-        i++;
-      }
-    }
-    data = curr;
-    start = 0;
-    end = size;
-  }
 
   public String toString(){
     String str = "{";
@@ -95,22 +85,22 @@ public class MyDeque <E> {
   }
 
   public void addLast(E element){
-    if(element==null){
-      throw new NullPointerException();
+        if(element==null){
+            throw new NullPointerException();
+        }
+        if(end==data.length-1 || size==data.length){
+          resize();
+        }
+        end++;
+        if(end<0){
+          data[data.length+end]=element;
+        }
+        else{
+          data[end] = element;
+        }
+        size++;
     }
-    if(size == data.length){
-      resize();
-    }
-    if(size==0){
-      data[start]=element;
-      end=start;
-      size++;
-      return;
-    }
-    end=(end+1)%data.length;
-    data[end]=element;
-    size++;
-  }
+
 
   public E removeFirst(){
     E e=data[start];
