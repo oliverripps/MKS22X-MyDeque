@@ -9,6 +9,7 @@ public class Calculator{
       if(nums[i].equals("+")){
         Double first=my.removeLast();
         Double second=my.removeLast();
+        //System.out.print(i);
         my.addLast(second+first);
       }
       else if(nums[i].equals("-")){
