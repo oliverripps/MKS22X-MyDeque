@@ -31,6 +31,13 @@ public class Calculator{
         Double second=my.removeLast();
         my.addLast(second%first);
       }
+    else{
+      Double val = Double.parseDouble(nums[i]);
+      my.addLast(val);
     }
+  }
+  return my.getLast();
+
+  }
 
 }
